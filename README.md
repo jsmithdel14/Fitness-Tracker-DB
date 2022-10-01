@@ -1,7 +1,5 @@
 # SQL Database - Fitness Tracker
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
 
-{Provide a description the software that you wrote and how it integrates with a SQL Relational Database. Describe how to use your program.}
 
 The software I wrote is a python program that incorporate sql to create a table for a database, as well as querying or searching through the table and data. The program has a few main features, the first is to allow myself to store personal workout progress by being able to add to the database my daily workouts, time, as well as adding things like how much sleep and calories I am getting every day. There is the ability to look at past days, add days, update any past days, delete past days, and even a simple function that allows the user what workout they should do that day based on the results they have entered. In order to look at what the user should do for the day you can just simply hit the "Tell Me What To Do Today" command and then enter your name and the data base will sort through the table and return the users results, aswell as returning the workout they should do. The program will tell you what workout to do based on which workout has the lowest count, which will automatically be sorted to the top of the list.  
 
@@ -9,9 +7,9 @@ The software I wrote is a python program that incorporate sql to create a table 
 
 The purpose for writing this software aside from having a personal fitness tracker I can use was to gain a better understanding on creating databases, and then using that database to make a table. I wanted to expand on my very little sql knowledge by learning how to use mainly sql commands to query data. Another goal of this project was to learn how I can make a function that uses sql and implement that into a project. Learning how to add, update and delete things from a database using sql was a great result of this project. I also wanted to get a better understanding of using groupby's in sql and aggregate functions like the count() or min() functions in sql. 
 
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running, a walkthrough of the code, and a view of how created the Relational Database.}
+# Demo
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/DCB5uuuwEX8)
 
 # Relational Database
 
@@ -35,7 +33,6 @@ sqlite3 had to imported as a library to use SQL commands.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
 * [Python sqlite3](https://docs.python.org/3.8/library/sqlite3.html)
 * [Relational Databases - Wikipedia](https://en.wikipedia.org/wiki/Relational_database)
 * [w3schools](https://www.w3schools.com/sql/)
