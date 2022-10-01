@@ -1,5 +1,5 @@
 import sqlite3
-
+# Creating connections and global variables
 conn = sqlite3.connect('fitness.db')
 cursor = conn.cursor()
 choice = None
@@ -12,7 +12,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS fitness (
     workout text,
     calories integer, 
     sleep real)""")
-
+# get_row function selects all the data from a certain row
 def get_row(cursor):
     cursor.execute("""SELECT name, date, time, workout, calories, sleep 
                   FROM fitness""")
@@ -22,9 +22,13 @@ def get_row(cursor):
       print(f"{index+1}. {results[index]}")
     choice = int(input("Select> "))
     return results[choice-1]
-
+# get_workout returns the top column workout based on the workout with lowest count
 def get_workout(cursor):
   user_name = input('Enter your name: ')
+  
+  # Step 1 ask for users name 
+  # Step 2 query all data under users name
+  # Step 3 count the total times of each workout, recommend the least done workout
   cursor.execute("""
                 SELECT name, workout, COUNT(workout) total_workout, AVG(time)
                 FROM fitness
@@ -36,7 +40,7 @@ def get_workout(cursor):
   print("{:>10}  {:>10}  {:>10}  {:>10}".format("Name",       
   "Workout","Count","Average Time"))
   results = cursor.fetchall()
-
+# for loop is printing the results
   for record in results:
     print("{:>10}  {:>10}  {:>10}  {:>10}".format(record[0], 
     record[1], record[2], record[3]))
@@ -45,6 +49,7 @@ def get_workout(cursor):
   return results[0][1]
     
 while choice != "6":
+    # user menu display, type the number you want to do
     print("1. Display Past Days")
     print("2. Add Day")
     print("3. Update Past Day")
@@ -84,8 +89,11 @@ while choice != "6":
         
         # Changing the choice/update
         if choice == 'name':
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
+        # I use this same block of code for each column
+        # Should turn into a function
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -109,8 +117,9 @@ while choice != "6":
 
           
         elif choice == "date":
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -133,8 +142,9 @@ while choice != "6":
           conn.commit()
           
         elif choice == 'time':
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -158,8 +168,9 @@ while choice != "6":
 
           
         elif choice == 'exercise':
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -183,8 +194,9 @@ while choice != "6":
 
           
         elif choice == 'calories':
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -208,8 +220,9 @@ while choice != "6":
 
           
         elif choice == 'sleep':
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
           row = get_row(cursor)
-          
           name = row[0]
           date = row[1]
           time = row[2]
@@ -238,6 +251,8 @@ while choice != "6":
 
     elif choice == "4":
         # Delete employee
+        # Using function to get values for each variable
+        # Then use each variable as a where condition
         row = get_row(cursor)
         name = row[0]
         date = row[1]
@@ -257,12 +272,9 @@ while choice != "6":
 
     elif choice == "5":
         # Telling what the user should do based on their name
-        # Step 1 ask for users name 
-        # Step 2 query all data under users name
-        
         print(f"You should do {get_workout(cursor)} today!")
         print()
-        # Step 3 count the total times of each workout, recommend the least done workout
+        
   
 # Close the database connection before exiting
 conn.close()
